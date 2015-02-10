@@ -14,6 +14,7 @@ namespace RHSCodingClub02.DAL
         public static List<StudentDTO> SearchStudent()
         {
             SqlCommand sqlCmd = GetStoredProcCommand("StudentSearch");
+            sqlCmd.Parameters.AddWithValue("@QueryType", "ALL");
 
             List<StudentDTO> searchResults = GetDTOList<StudentDTO>(ref sqlCmd);
 
