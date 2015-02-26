@@ -1,0 +1,6 @@
+INSERT INTO StudentCourse (studentId, courseId, finalGrade) VALUES (1, 2, 70)
+INSERT INTO StudentCourse (studentId, courseId, finalGrade) VALUES (1, 5, 60)
+INSERT INTO StudentCourse (studentId, courseId, finalGrade) VALUES (1, 20, 95)
+INSERT INTO StudentCourse (studentId, courseId, finalGrade) VALUES (3, 12, 85)
+INSERT INTO StudentCourse (studentId, courseId, finalGrade) VALUES (3, 18, 90)
+INSERT INTO StudentCourse (studentId, courseId, finalGrade) VALUES (3, 21, 92)
