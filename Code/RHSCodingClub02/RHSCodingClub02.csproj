@@ -54,6 +54,12 @@
     <Compile Include="DTO\Parser\DTOParserFactory.cs" />
     <Compile Include="DTO\Parser\StudentDTOParser.cs" />
     <Compile Include="DTO\StudentDTO.cs" />
+    <Compile Include="Linq\LinqLayer.cs" />
+    <Compile Include="Linq\RHSCodingClub.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RHSCodingClub.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Linq\RHSCodingClub.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>RHSCodingClub.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Linq\RHSCodingClub.dbml.layout">
+      <DependentUpon>RHSCodingClub.dbml</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
