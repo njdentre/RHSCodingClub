@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picRHS = new System.Windows.Forms.PictureBox();
             this.tabStudentCourse = new System.Windows.Forms.TabControl();
             this.tabPageStudentCourse = new System.Windows.Forms.TabPage();
             this.tabPageStudent = new System.Windows.Forms.TabPage();
+            this.btnStudentDelete = new System.Windows.Forms.Button();
+            this.btnStudentEdit = new System.Windows.Forms.Button();
+            this.btnStudentAdd = new System.Windows.Forms.Button();
             this.grdStudent = new System.Windows.Forms.DataGridView();
             this.tabPageCourse = new System.Windows.Forms.TabPage();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRHS)).BeginInit();
             this.tabStudentCourse.SuspendLayout();
             this.tabPageStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStudent)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // picRHS
             // 
-            this.pictureBox1.Image = global::RHSCodingClub02.Properties.Resources.rhs_logo_01;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(771, 150);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.picRHS.Image = global::RHSCodingClub02.Properties.Resources.rhs_logo_01;
+            this.picRHS.Location = new System.Drawing.Point(12, 12);
+            this.picRHS.Name = "picRHS";
+            this.picRHS.Size = new System.Drawing.Size(771, 150);
+            this.picRHS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picRHS.TabIndex = 0;
+            this.picRHS.TabStop = false;
             // 
             // tabStudentCourse
             // 
@@ -77,9 +77,9 @@
             // 
             // tabPageStudent
             // 
-            this.tabPageStudent.Controls.Add(this.btnDelete);
-            this.tabPageStudent.Controls.Add(this.btnEdit);
-            this.tabPageStudent.Controls.Add(this.btnAdd);
+            this.tabPageStudent.Controls.Add(this.btnStudentDelete);
+            this.tabPageStudent.Controls.Add(this.btnStudentEdit);
+            this.tabPageStudent.Controls.Add(this.btnStudentAdd);
             this.tabPageStudent.Controls.Add(this.grdStudent);
             this.tabPageStudent.Location = new System.Drawing.Point(4, 22);
             this.tabPageStudent.Name = "tabPageStudent";
@@ -89,6 +89,34 @@
             this.tabPageStudent.Text = "Student";
             this.tabPageStudent.UseVisualStyleBackColor = true;
             // 
+            // btnStudentDelete
+            // 
+            this.btnStudentDelete.Location = new System.Drawing.Point(682, 64);
+            this.btnStudentDelete.Name = "btnStudentDelete";
+            this.btnStudentDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnStudentDelete.TabIndex = 4;
+            this.btnStudentDelete.Text = "Delete";
+            this.btnStudentDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnStudentEdit
+            // 
+            this.btnStudentEdit.Location = new System.Drawing.Point(682, 35);
+            this.btnStudentEdit.Name = "btnStudentEdit";
+            this.btnStudentEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnStudentEdit.TabIndex = 3;
+            this.btnStudentEdit.Text = "Edit...";
+            this.btnStudentEdit.UseVisualStyleBackColor = true;
+            // 
+            // btnStudentAdd
+            // 
+            this.btnStudentAdd.Location = new System.Drawing.Point(682, 6);
+            this.btnStudentAdd.Name = "btnStudentAdd";
+            this.btnStudentAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnStudentAdd.TabIndex = 2;
+            this.btnStudentAdd.Text = "Add...";
+            this.btnStudentAdd.UseVisualStyleBackColor = true;
+            this.btnStudentAdd.Click += new System.EventHandler(this.btnStudentAdd_Click);
+            // 
             // grdStudent
             // 
             this.grdStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -96,6 +124,10 @@
             this.grdStudent.Name = "grdStudent";
             this.grdStudent.Size = new System.Drawing.Size(670, 330);
             this.grdStudent.TabIndex = 1;
+            this.grdStudent.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdStudent_RowEnter);
+            this.grdStudent.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdStudent_RowLeave);
+            this.grdStudent.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.grdStudent_RowsRemoved);
+            this.grdStudent.SelectionChanged += new System.EventHandler(this.grdStudent_SelectionChanged);
             // 
             // tabPageCourse
             // 
@@ -107,45 +139,18 @@
             this.tabPageCourse.Text = "Course";
             this.tabPageCourse.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(682, 6);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add...";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(682, 35);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edit...";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(682, 64);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 548);
             this.Controls.Add(this.tabStudentCourse);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picRHS);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.Text = "RHS Coding Club";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRHS)).EndInit();
             this.tabStudentCourse.ResumeLayout(false);
             this.tabPageStudent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdStudent)).EndInit();
@@ -156,15 +161,15 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picRHS;
         private System.Windows.Forms.TabControl tabStudentCourse;
         private System.Windows.Forms.TabPage tabPageStudentCourse;
         private System.Windows.Forms.TabPage tabPageStudent;
         private System.Windows.Forms.TabPage tabPageCourse;
         private System.Windows.Forms.DataGridView grdStudent;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnStudentDelete;
+        private System.Windows.Forms.Button btnStudentEdit;
+        private System.Windows.Forms.Button btnStudentAdd;
     }
 }
 
