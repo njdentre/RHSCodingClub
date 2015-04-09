@@ -11,6 +11,8 @@ namespace RHSCodingClub02.Linq
     {
         private static RHSCodingClubDataContext db = new RHSCodingClubDataContext();
 
+        #region Student Methods
+
         public static DataTable GetAllStudents()
         {
             //get all student records where that are not flagged as deleted (0)
@@ -50,11 +52,87 @@ namespace RHSCodingClub02.Linq
 
         public static void UpdateStudentName(int id, string firstName, string lastName)
         {
-            //update a student record by updating its first and last name
+            bool submitChange = false;
+            //update a student record by updating its first and/or last name
             Student student = db.Students.Single(s => s.Id.Equals(id));
-            student.firstName = firstName;
-            student.lastName = lastName;
+            if (student.firstName != firstName)
+            {
+                student.firstName = firstName;
+                submitChange = true;
+            }
+            if (student.lastName != lastName)
+            {
+                student.lastName = lastName;
+                submitChange = true;
+            }
+            if (submitChange)
+            {
+                db.SubmitChanges();
+            }
+        }
+
+        #endregion
+
+        #region Course Methods
+
+        public static DataTable GetAllCourses()
+        {
+            //get all student records where that are not flagged as deleted (0)
+            var courses = from c in db.Courses where c.isDeleted.Equals(0) select new { c.Id, c.name, c.level, c.isDeleted };
+
+            DataTable dtCourses = new DataTable("Courses");
+            dtCourses.Columns.Add("Id");
+            dtCourses.Columns.Add("Course Name");
+            dtCourses.Columns.Add("Level");
+            dtCourses.Columns.Add("isDeleted");
+
+            foreach (var course in courses)
+            {
+                dtCourses.Rows.Add(course.Id, course.name, course.level, course.isDeleted);
+            }
+
+            return dtCourses;
+        }
+
+        public static void AddCourse(string name, string level)
+        {
+            //add a new course record by suppling the course name and level
+            Course course = new Course();
+            course.name = name;
+            course.level = level;
+            db.Courses.InsertOnSubmit(course);
             db.SubmitChanges();
         }
+
+        public static void DeleteCourse(int id)
+        {
+            //delete a course by setting its isDeleted flag to 1
+            Course course = db.Courses.Single(c => c.Id.Equals(id));
+            course.isDeleted = 1;
+            db.SubmitChanges();
+        }
+
+        public static void UpdateCourse(int id, string name, string level)
+        {
+            bool submitChange = false;
+            //update a course record by updating its course name and/or level
+            Course course = db.Courses.Single(c => c.Id.Equals(id));
+            if (course.name != name)
+            {
+                course.name = name;
+                submitChange = true;
+            }
+            if (course.level != level)
+            {
+                course.level = level;
+                submitChange = true;
+            }
+            if (submitChange)
+            {
+                db.SubmitChanges();
+            }
+        }
+
+        #endregion
     }
 }

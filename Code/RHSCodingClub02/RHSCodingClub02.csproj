@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddEditCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditCourse.Designer.cs">
+      <DependentUpon>AddEditCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddEditStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddEditStudent.Designer.cs">
+      <DependentUpon>AddEditStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\DALBase.cs" />
     <Compile Include="DAL\StudentDAL.cs" />
     <Compile Include="DTO\CommandBase.cs" />
@@ -68,6 +80,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddEditCourse.resx">
+      <DependentUpon>AddEditCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddEditStudent.resx">
+      <DependentUpon>AddEditStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,7 +118,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rhs_logo_01.jpg" />
