@@ -31,23 +31,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabStudentCourse = new System.Windows.Forms.TabControl();
             this.tabPageStudentCourse = new System.Windows.Forms.TabPage();
+            this.btnStudentCourseDelete = new System.Windows.Forms.Button();
+            this.btnStudentCourseEdit = new System.Windows.Forms.Button();
+            this.btnStudentCourseAdd = new System.Windows.Forms.Button();
+            this.grdStudentCourse = new System.Windows.Forms.DataGridView();
             this.tabPageStudent = new System.Windows.Forms.TabPage();
             this.btnStudentDelete = new System.Windows.Forms.Button();
             this.btnStudentEdit = new System.Windows.Forms.Button();
             this.btnStudentAdd = new System.Windows.Forms.Button();
             this.grdStudent = new System.Windows.Forms.DataGridView();
             this.tabPageCourse = new System.Windows.Forms.TabPage();
-            this.picRHS = new System.Windows.Forms.PictureBox();
-            this.grdCourse = new System.Windows.Forms.DataGridView();
             this.btnCourseDelete = new System.Windows.Forms.Button();
             this.btnCourseEdit = new System.Windows.Forms.Button();
             this.btnCourseAdd = new System.Windows.Forms.Button();
+            this.grdCourse = new System.Windows.Forms.DataGridView();
+            this.picRHS = new System.Windows.Forms.PictureBox();
             this.tabStudentCourse.SuspendLayout();
+            this.tabPageStudentCourse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdStudentCourse)).BeginInit();
             this.tabPageStudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStudent)).BeginInit();
             this.tabPageCourse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRHS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRHS)).BeginInit();
             this.SuspendLayout();
             // 
             // tabStudentCourse
@@ -63,6 +69,10 @@
             // 
             // tabPageStudentCourse
             // 
+            this.tabPageStudentCourse.Controls.Add(this.btnStudentCourseDelete);
+            this.tabPageStudentCourse.Controls.Add(this.btnStudentCourseEdit);
+            this.tabPageStudentCourse.Controls.Add(this.btnStudentCourseAdd);
+            this.tabPageStudentCourse.Controls.Add(this.grdStudentCourse);
             this.tabPageStudentCourse.Location = new System.Drawing.Point(4, 22);
             this.tabPageStudentCourse.Name = "tabPageStudentCourse";
             this.tabPageStudentCourse.Padding = new System.Windows.Forms.Padding(3);
@@ -70,6 +80,44 @@
             this.tabPageStudentCourse.TabIndex = 0;
             this.tabPageStudentCourse.Text = "Student / Course";
             this.tabPageStudentCourse.UseVisualStyleBackColor = true;
+            // 
+            // btnStudentCourseDelete
+            // 
+            this.btnStudentCourseDelete.Location = new System.Drawing.Point(682, 64);
+            this.btnStudentCourseDelete.Name = "btnStudentCourseDelete";
+            this.btnStudentCourseDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnStudentCourseDelete.TabIndex = 7;
+            this.btnStudentCourseDelete.Text = "Delete";
+            this.btnStudentCourseDelete.UseVisualStyleBackColor = true;
+            this.btnStudentCourseDelete.Click += new System.EventHandler(this.btnStudentCourseDelete_Click);
+            // 
+            // btnStudentCourseEdit
+            // 
+            this.btnStudentCourseEdit.Location = new System.Drawing.Point(682, 35);
+            this.btnStudentCourseEdit.Name = "btnStudentCourseEdit";
+            this.btnStudentCourseEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnStudentCourseEdit.TabIndex = 6;
+            this.btnStudentCourseEdit.Text = "Edit...";
+            this.btnStudentCourseEdit.UseVisualStyleBackColor = true;
+            this.btnStudentCourseEdit.Click += new System.EventHandler(this.btnStudentCourseEdit_Click);
+            // 
+            // btnStudentCourseAdd
+            // 
+            this.btnStudentCourseAdd.Location = new System.Drawing.Point(682, 6);
+            this.btnStudentCourseAdd.Name = "btnStudentCourseAdd";
+            this.btnStudentCourseAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnStudentCourseAdd.TabIndex = 5;
+            this.btnStudentCourseAdd.Text = "Add...";
+            this.btnStudentCourseAdd.UseVisualStyleBackColor = true;
+            this.btnStudentCourseAdd.Click += new System.EventHandler(this.btnStudentCourseAdd_Click);
+            // 
+            // grdStudentCourse
+            // 
+            this.grdStudentCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdStudentCourse.Location = new System.Drawing.Point(6, 6);
+            this.grdStudentCourse.Name = "grdStudentCourse";
+            this.grdStudentCourse.Size = new System.Drawing.Size(670, 330);
+            this.grdStudentCourse.TabIndex = 0;
             // 
             // tabPageStudent
             // 
@@ -142,25 +190,6 @@
             this.tabPageCourse.Text = "Course";
             this.tabPageCourse.UseVisualStyleBackColor = true;
             // 
-            // picRHS
-            // 
-            this.picRHS.Image = global::RHSCodingClub02.Properties.Resources.rhs_logo_01;
-            this.picRHS.Location = new System.Drawing.Point(12, 12);
-            this.picRHS.Name = "picRHS";
-            this.picRHS.Size = new System.Drawing.Size(771, 150);
-            this.picRHS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picRHS.TabIndex = 0;
-            this.picRHS.TabStop = false;
-            // 
-            // grdCourse
-            // 
-            this.grdCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdCourse.Location = new System.Drawing.Point(6, 6);
-            this.grdCourse.MultiSelect = false;
-            this.grdCourse.Name = "grdCourse";
-            this.grdCourse.Size = new System.Drawing.Size(670, 330);
-            this.grdCourse.TabIndex = 2;
-            // 
             // btnCourseDelete
             // 
             this.btnCourseDelete.Location = new System.Drawing.Point(682, 64);
@@ -191,6 +220,25 @@
             this.btnCourseAdd.UseVisualStyleBackColor = true;
             this.btnCourseAdd.Click += new System.EventHandler(this.btnCourseAdd_Click);
             // 
+            // grdCourse
+            // 
+            this.grdCourse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdCourse.Location = new System.Drawing.Point(6, 6);
+            this.grdCourse.MultiSelect = false;
+            this.grdCourse.Name = "grdCourse";
+            this.grdCourse.Size = new System.Drawing.Size(670, 330);
+            this.grdCourse.TabIndex = 2;
+            // 
+            // picRHS
+            // 
+            this.picRHS.Image = global::RHSCodingClub02.Properties.Resources.rhs_logo_01;
+            this.picRHS.Location = new System.Drawing.Point(12, 12);
+            this.picRHS.Name = "picRHS";
+            this.picRHS.Size = new System.Drawing.Size(771, 150);
+            this.picRHS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picRHS.TabIndex = 0;
+            this.picRHS.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,11 +251,13 @@
             this.Name = "frmMain";
             this.Text = "RHS Coding Club";
             this.tabStudentCourse.ResumeLayout(false);
+            this.tabPageStudentCourse.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdStudentCourse)).EndInit();
             this.tabPageStudent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdStudent)).EndInit();
             this.tabPageCourse.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picRHS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCourse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRHS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +278,10 @@
         private System.Windows.Forms.Button btnCourseEdit;
         private System.Windows.Forms.Button btnCourseAdd;
         private System.Windows.Forms.DataGridView grdCourse;
+        private System.Windows.Forms.Button btnStudentCourseDelete;
+        private System.Windows.Forms.Button btnStudentCourseEdit;
+        private System.Windows.Forms.Button btnStudentCourseAdd;
+        private System.Windows.Forms.DataGridView grdStudentCourse;
     }
 }
 

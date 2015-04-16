@@ -36,6 +36,9 @@ namespace RHSCodingClub02.Linq
     partial void InsertCourse(Course instance);
     partial void UpdateCourse(Course instance);
     partial void DeleteCourse(Course instance);
+    partial void InsertStudentCourse(StudentCourse instance);
+    partial void UpdateStudentCourse(StudentCourse instance);
+    partial void DeleteStudentCourse(StudentCourse instance);
     #endregion
 		
 		public RHSCodingClubDataContext() : 
@@ -81,6 +84,14 @@ namespace RHSCodingClub02.Linq
 			get
 			{
 				return this.GetTable<Course>();
+			}
+		}
+		
+		public System.Data.Linq.Table<StudentCourse> StudentCourses
+		{
+			get
+			{
+				return this.GetTable<StudentCourse>();
 			}
 		}
 	}
@@ -308,6 +319,164 @@ namespace RHSCodingClub02.Linq
 					this._level = value;
 					this.SendPropertyChanged("level");
 					this.OnlevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isDeleted", DbType="Int NOT NULL")]
+		public int isDeleted
+		{
+			get
+			{
+				return this._isDeleted;
+			}
+			set
+			{
+				if ((this._isDeleted != value))
+				{
+					this.OnisDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._isDeleted = value;
+					this.SendPropertyChanged("isDeleted");
+					this.OnisDeletedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.StudentCourse")]
+	public partial class StudentCourse : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _studentId;
+		
+		private int _courseId;
+		
+		private int _finalGrade;
+		
+		private int _isDeleted;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnstudentIdChanging(int value);
+    partial void OnstudentIdChanged();
+    partial void OncourseIdChanging(int value);
+    partial void OncourseIdChanged();
+    partial void OnfinalGradeChanging(int value);
+    partial void OnfinalGradeChanged();
+    partial void OnisDeletedChanging(int value);
+    partial void OnisDeletedChanged();
+    #endregion
+		
+		public StudentCourse()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_studentId", DbType="Int NOT NULL")]
+		public int studentId
+		{
+			get
+			{
+				return this._studentId;
+			}
+			set
+			{
+				if ((this._studentId != value))
+				{
+					this.OnstudentIdChanging(value);
+					this.SendPropertyChanging();
+					this._studentId = value;
+					this.SendPropertyChanged("studentId");
+					this.OnstudentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_courseId", DbType="Int NOT NULL")]
+		public int courseId
+		{
+			get
+			{
+				return this._courseId;
+			}
+			set
+			{
+				if ((this._courseId != value))
+				{
+					this.OncourseIdChanging(value);
+					this.SendPropertyChanging();
+					this._courseId = value;
+					this.SendPropertyChanged("courseId");
+					this.OncourseIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_finalGrade", DbType="Int NOT NULL")]
+		public int finalGrade
+		{
+			get
+			{
+				return this._finalGrade;
+			}
+			set
+			{
+				if ((this._finalGrade != value))
+				{
+					this.OnfinalGradeChanging(value);
+					this.SendPropertyChanging();
+					this._finalGrade = value;
+					this.SendPropertyChanged("finalGrade");
+					this.OnfinalGradeChanged();
 				}
 			}
 		}

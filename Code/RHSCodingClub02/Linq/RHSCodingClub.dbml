@@ -16,4 +16,13 @@
       <Column Name="isDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.StudentCourse" Member="StudentCourses">
+    <Type Name="StudentCourse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="studentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="courseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="finalGrade" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isDeleted" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

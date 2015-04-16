@@ -69,25 +69,25 @@ namespace RHSCodingClub02
         {
             if (txtCourseName.Text.Trim() == "")
             {
-                MessageBox.Show("You must enter a course name.", this.Text);
+                MessageBox.Show("You must enter a course name.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (txtLevel.Text.Trim() == "")
             {
-                MessageBox.Show("You must enter a last name.", this.Text);
+                MessageBox.Show("You must enter a last name.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             if (m_AddEdit == CourseOperation.Add)
             {
                 LinqLayer.AddCourse(txtCourseName.Text, txtLevel.Text);
-                this.Close();
             }
             else
             {
                 LinqLayer.UpdateCourse(m_Id, txtCourseName.Text, txtLevel.Text);
-                this.Close();
             }
+
+            this.Close();
         }
     }
 }

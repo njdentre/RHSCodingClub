@@ -27,6 +27,7 @@ namespace RHSCodingClub02
             InitializeComponent();
             LoadStudentGrid();
             LoadCourseGrid();
+            LoadStudentCourseGrid();
 
             //set new row index
             m_NewRowIndex = grdStudent.NewRowIndex;
@@ -217,5 +218,79 @@ namespace RHSCodingClub02
         }
 
         #endregion
+
+        #region Student Course Methods
+
+        private void LoadStudentCourseGrid()
+        {
+            DataTable studentCourseResults = null;
+            switch (m_dbLayer)
+            {
+                case "linq":
+                    studentCourseResults = LinqLayer.GetAllStudentCourses();
+                    break;
+                case "lightweight":
+                    studentCourseResults = StudentDAL.SearchStudent();
+                    break;
+                default:
+                    break;
+            }
+
+            grdStudentCourse.DataSource = null;
+            grdStudentCourse.DataSource = studentCourseResults;
+            grdStudentCourse.Columns["Student Name"].Width = 200;
+            grdStudentCourse.Columns["Course (Level)"].Width = 200;
+            grdStudentCourse.Columns["StudentCourseId"].Visible = false;
+            grdStudentCourse.Columns["StudentId"].Visible = false;
+            grdStudentCourse.Columns["CourseId"].Visible = false;
+            grdStudentCourse.Columns["isDeleted"].Visible = false;
+        }
+
+        private void btnStudentCourseAdd_Click(object sender, EventArgs e)
+        {
+            frmAddEditStudentCourse addEditStudentCourseForm = new frmAddEditStudentCourse();
+            addEditStudentCourseForm.AddEdit = StudentCourseOperation.Add;
+            addEditStudentCourseForm.StudentCourseId = -1;
+            addEditStudentCourseForm.StudentId = -1;
+            addEditStudentCourseForm.CourseId = -1;
+            addEditStudentCourseForm.Mark = "0";
+            addEditStudentCourseForm.ShowDialog();
+            LoadStudentCourseGrid();
+        }
+
+        private void btnStudentCourseEdit_Click(object sender, EventArgs e)
+        {
+            if (grdStudentCourse.SelectedRows.Count > 0)
+            {
+                frmAddEditStudentCourse addEditStudentCourseForm = new frmAddEditStudentCourse();
+                addEditStudentCourseForm.AddEdit = StudentCourseOperation.Edit;
+                addEditStudentCourseForm.StudentCourseId = Convert.ToInt32(grdStudentCourse.Rows[grdStudentCourse.SelectedRows[0].Index].Cells["StudentCourseId"].Value);
+                addEditStudentCourseForm.StudentId = Convert.ToInt32(grdStudentCourse.Rows[grdStudentCourse.SelectedRows[0].Index].Cells["StudentId"].Value);
+                addEditStudentCourseForm.CourseId = Convert.ToInt32(grdStudentCourse.Rows[grdStudentCourse.SelectedRows[0].Index].Cells["CourseId"].Value);
+                addEditStudentCourseForm.Mark = grdStudentCourse.Rows[grdStudentCourse.SelectedRows[0].Index].Cells["Mark"].Value.ToString();
+                addEditStudentCourseForm.ShowDialog();
+                LoadStudentCourseGrid();
+            }
+            else
+            {
+                MessageBox.Show("You must select a student course record to edit.", "Edit Student Course Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnStudentCourseDelete_Click(object sender, EventArgs e)
+        {
+            if (grdStudentCourse.SelectedRows.Count > 0)
+            {
+                LinqLayer.DeleteStudentCourse(Convert.ToInt32(grdStudentCourse.Rows[grdStudentCourse.SelectedRows[0].Index].Cells["StudentCourseId"].Value));
+                LoadStudentCourseGrid();
+            }
+            else
+            {
+                MessageBox.Show("You must select a student course record to delete.", "Delete Student Course Record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        #endregion
+
     }
 }
